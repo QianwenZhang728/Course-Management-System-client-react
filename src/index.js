@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import CourseListComponent from "./components/CourseListComponent";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <div className="container">
+        <CourseListComponent instructor="Jose" term="Fall 2020"/>
+    </div>,
   document.getElementById('root')
 );
 
