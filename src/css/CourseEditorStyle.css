@@ -1,0 +1,71 @@
+.navbar-nav, .nav-pills {
+    width: 100%;
+}
+
+.navbar .nav-item {
+    background-color: #006a71;
+    margin-right: 10px;
+}
+
+.navbar-brand-combination {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar {
+    background-color: #68b0ab;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+.navbar .fa-times {
+    position: relative;
+    right: 20px;
+    font-size: 1.5em;
+}
+
+.navbar-brand, .fa-times, .nav-link, .fa-plus {
+    color: White;
+}
+
+.modules .nav-item, .topics .nav-item {
+    background-color: #68b0ab;
+    margin-top: 10px;
+}
+
+.wbdv-topic-pill {
+    margin-right: 10px;
+}
+
+.active {
+    background-color: #BFDCAE;
+}
+
+.modules {
+    background-color: #006a71;
+}
+
+span {
+    font-size:0.8em;
+}
+
+.fa-toggle-off {
+    font-size: 1.5em;
+    color: black;
+}
+
+.heading-text, .heading-select, .widget-name, p, h2 {
+    margin-top: 10px;
+}
+
+.wbdv-light-grey-border {
+    margin-top: 15px;
+    padding: 10px 10px;
+}
+
+.fa-calendar-plus-o {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: black;
+}

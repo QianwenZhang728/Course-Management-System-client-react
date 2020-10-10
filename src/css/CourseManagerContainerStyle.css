@@ -1,0 +1,67 @@
+.courseTable-nav {
+    background-color: #68b0ab;
+    position: fixed;
+    width: 100%;
+}
+
+.fa-align-justify {
+    color: white;
+}
+
+/*form {*/
+/*    position: relative;*/
+/*    right: 100px;*/
+/*}*/
+
+.wbdv-add-course {
+    position: relative;
+    right: 20px;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.wbdv-add-course {
+    color: #006a71;
+    position: relative;
+    right: 0px;
+}
+
+.wbdv-add-course.add-bottom {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+.fa-sort-alpha-asc {
+    padding-left: 20px;
+}
+
+.course-list-container {
+    padding-top: 75px;
+    padding-bottom: 10px;
+}
+
+.icons {
+    text-align: right;
+}
+
+.grid-header {
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card {
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 10px;
+    border-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+}
+
+
+
