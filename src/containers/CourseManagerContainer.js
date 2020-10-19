@@ -97,7 +97,7 @@ export class CourseManagerContainer extends React.Component {
                 <BrowserRouter>
 
                     <div className="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
-                        <Route path="/courses" exact>
+                        <Route path="/" exact>
 
                             <nav bg="light" className="navbar courseTable-nav fixed-top justify-content-between">
                                 <i className="fa fa-align-justify fa-2x wbdv-hamburger" style={{paddingLeft: 10}}></i>

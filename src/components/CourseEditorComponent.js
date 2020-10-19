@@ -4,6 +4,7 @@ import "../css/CourseEditorStyle.css";
 import LessonTabsComponent from "./LessonTabsComponent";
 import ModuleListComponent from "./ModuleListComponent";
 import TopicPillsComponent from "./TopicPillsComponent";
+import WidgetListContainer from "../containers/WidgetListContainer";
 
 export default class CourseEditorComponent extends React.Component {
 
@@ -34,6 +35,7 @@ export default class CourseEditorComponent extends React.Component {
 
                     <div className="col-8">
                         <TopicPillsComponent/>
+                        <WidgetListContainer/>
                     </div>
 
                 </div>
