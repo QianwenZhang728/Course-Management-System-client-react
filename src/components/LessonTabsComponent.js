@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 
 const LessonTabs = (
     {
-        path,
         course,
         moduleId,
         lessons=[],
@@ -17,7 +16,7 @@ const LessonTabs = (
     }) =>
     <nav className="navbar navbar-expand-md">
         <div className="col-4 navbar-brand-combination">
-            <Link to={path.str} className="link">
+            <Link to={"/table"} className="link">
                 <i className="fa fa-times btn wbdv-course-editor wbdv-close"></i>
 
                 {/*<a className="btn"*/}

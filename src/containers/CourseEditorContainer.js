@@ -45,8 +45,7 @@ class CourseEditorContainer extends React.Component {
     render() {
         return(
             <div>
-                {console.log(this.props)}
-                <LessonTabsComponent path={{str: this.props.history.location.pathname}}/>
+                <LessonTabsComponent />
 
                 <div className="container-fluid row">
                     <div className="col-4 modules">
