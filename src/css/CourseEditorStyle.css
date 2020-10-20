@@ -25,7 +25,9 @@
     font-size: 1.5em;
 }
 
-.navbar-brand, .fa-times, .nav-link, .fa-plus {
+.navbar-brand, .fa-times, .nav-link, .fa-plus,
+.modules .fa-check, .modules .fa-pencil, .lessons .fa-pencil,
+.lessons .fa-check, .topics .fa-pencil, .topics .fa-check {
     color: White;
 }
 
@@ -68,4 +70,15 @@ span {
     margin-top: 10px;
     font-size: 1.5em;
     color: black;
+}
+
+.wbdv-module-item {
+    color: white;
+}
+
+.link {
+    color: #FFF;
+}
+.link:hover {
+    color: #00F
 }

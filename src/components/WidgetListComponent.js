@@ -6,7 +6,7 @@ const WidgetListComponent = ({widgets=[], createWidget, deleteWidget, updateWidg
         <ul>
             {
                 widgets.map(widget =>
-                <li>
+                <li key={widget._id}>
                     <button onClick={() => deleteWidget(widget)}>Delete</button>
                     {
                         widget.editing &&

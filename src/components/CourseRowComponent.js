@@ -2,9 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {updateCourse} from "../services/CourseService";
 
-const courseBeingEdited = false
-const editCourse = () => {}
-
 export default class CourseRowComponent extends React.Component {
     state = {
         editing: false,
@@ -29,7 +26,7 @@ export default class CourseRowComponent extends React.Component {
                     }
                     {
                         !this.state.editing &&
-                        <Link to={`/edit/${this.props.course._id}`}>{this.state.course.title}</Link>
+                        <Link to={`/course/${this.props.course._id}`}>{this.state.course.title}</Link>
                     }
                 </td>
                 <td className="d-none d-sm-table-cell">{this.props.course.owner}</td>
