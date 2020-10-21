@@ -12,17 +12,16 @@ const LessonTabs = (
         deleteLesson,
         updateLesson,
         ok,
-        edit
+        edit,
+        selectedLessonId,
+        selectLesson
     }) =>
     <nav className="navbar navbar-expand-md">
         <div className="col-4 navbar-brand-combination">
-            <Link to={"/table"} className="link">
-                <i className="fa fa-times btn wbdv-course-editor wbdv-close"></i>
-
-                {/*<a className="btn"*/}
-                {/*   onClick={this.props.handleView}*/}
-                {/*><i className="fa fa-th wbdv-button wbdv-list-layout"></i></a>*/}
-            </Link>
+            <i onClick={() => window.history.go(-1)} className="fa fa-times btn wbdv-course-editor wbdv-close"></i>
+            {/*<Link to={"/table"} className="link">*/}
+            {/*    <i className="fa fa-times btn wbdv-course-editor wbdv-close"></i>*/}
+            {/*</Link>*/}
 
             {/*<a href="#" className="wbdv-course-editor wbdv-close">*/}
             {/*    <i className="fa fa-times"></i>*/}
@@ -40,17 +39,19 @@ const LessonTabs = (
 
             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div className="navbar-nav lessons">
-                    <ul className="nav nav-pills nav-fill">
+                    <ul className="nav nav-pills nav-fill lessons">
                         {
                             lessons.map(lesson =>
-                                <li key={lesson._id} className="nav-item">
+                                <li key={lesson._id}
+                                className={lesson._id === selectedLessonId? "nav-item selected" : "nav-item"}>
                                     {/*<a className="nav-link">*/}
                                         {
                                             !lesson.editing &&
                                             <span>
-                                                <Link to={`/course/${course._id}/modules/${moduleId}/lessons/${lesson._id}`} className="link">
+                                                <Link to={`/course/${course._id}/modules/${moduleId}/lessons/${lesson._id}`}
+                                                      onClick={() => selectLesson(lesson)} className="link">
                                                     {lesson.title}
-                                                  </Link>
+                                                </Link>
                                                 <i onClick={() => edit(lesson)} className="fa fa-pencil btn pull-right"></i>
                                             </span>
                                         }
@@ -89,8 +90,8 @@ const LessonTabs = (
 const stateToPropertyMapper = (state) => ({
     lessons: state.lessonReducer.lessons,
     moduleId: state.lessonReducer.moduleId,
-    // moduleId: state.moduleReducer.moduleId,
-    course: state.courseReducer.course
+    course: state.courseReducer.course,
+    selectedLessonId: state.lessonReducer.selectedLessonId
 })
 
 const dispatchToPropertyMapper = (dispatch) => ({
@@ -158,7 +159,14 @@ const dispatchToPropertyMapper = (dispatch) => ({
                 })
             })
 
-    }
+    },
+
+    selectLesson: (lesson) =>
+        dispatch({
+            type: "SELECT_LESSON",
+            lessonId: lesson._id
+        })
+
 
 //     createLessonForModule: (moduleId) =>
 //         lessonService.createLessonForModule(

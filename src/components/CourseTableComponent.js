@@ -47,9 +47,10 @@ class CourseTableComponent extends React.Component {
                             </th>
                             <th className="icons">
                                 <Link to={`/grid`} className="link">
-                                    <a className="btn"
-                                       onClick={this.props.handleView}
-                                    ><i className="fa fa-th wbdv-button wbdv-grid-layout"></i></a>
+                                    {/*<a className="btn"*/}
+                                    <i onClick={this.props.handleView}
+                                    className="fa fa-th btn wbdv-button wbdv-grid-layout"></i>
+                                    {/*</a>*/}
                                 </Link>
                                 <a className="btn"><i
                                     className="fa fa-sort-alpha-asc wbdv-header wbdv-sort"></i></a>

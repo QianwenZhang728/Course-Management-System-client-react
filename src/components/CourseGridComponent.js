@@ -46,9 +46,7 @@ class CourseGridComponent extends React.Component {
                     </div>
                     <div className="col-4 icons" >
                         <Link to={`/table`} className="link">
-                            <a className="btn"
-                               onClick={this.props.handleView}
-                            ><i className="fa fa-list wbdv-button wbdv-list-layout"></i></a>
+                            <i onClick={this.props.handleView} className="fa fa-list btn wbdv-button wbdv-list-layout"></i>
                         </Link>
 
                         <a className="btn"><i

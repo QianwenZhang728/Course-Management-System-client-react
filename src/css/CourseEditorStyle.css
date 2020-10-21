@@ -2,11 +2,6 @@
     width: 100%;
 }
 
-.navbar .nav-item {
-    background-color: #006a71;
-    margin-right: 10px;
-}
-
 .navbar-brand-combination {
     padding-left: 0;
     padding-right: 0;
@@ -31,9 +26,14 @@
     color: White;
 }
 
-.modules .nav-item, .topics .nav-item {
+.modules .nav-item, .wbdv-topic-pill {
     background-color: #68b0ab;
     margin-top: 10px;
+}
+
+.navbar .nav-item {
+    background-color: #006a71;
+    margin-right: 10px;
 }
 
 .wbdv-topic-pill {
@@ -81,4 +81,20 @@ span {
 }
 .link:hover {
     color: #00F
+}
+
+.wbdv-module-item.selected {
+    background-color: darkgoldenrod;
+    margin-top: 10px;
+}
+
+.lessons .selected {
+    background-color: darkgoldenrod;
+    margin-right: 10px;
+}
+
+.topics .selected {
+    background-color: darkgoldenrod;
+    margin-top: 10px;
+    margin-right: 10px;
 }

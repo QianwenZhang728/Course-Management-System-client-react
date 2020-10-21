@@ -1,5 +1,6 @@
 const initialState = {
-    modules: []
+    modules: [],
+    selectedModuleId: ""
 }
 
 const moduleReducer = (state=initialState, action) => {
@@ -26,6 +27,11 @@ const moduleReducer = (state=initialState, action) => {
             return {
                 ...state,
                 modules: state.modules.map(module => module._id === action.module._id ? action.module : module)
+            }
+        case "SELECT_MODULE":
+            return {
+                ...state,
+                selectedModuleId: action.moduleId
             }
         default:
             return state

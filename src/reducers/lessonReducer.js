@@ -1,5 +1,6 @@
 const initialState = {
-    lessons: []
+    lessons: [],
+    selectedLessonId: ""
 }
 
 
@@ -28,6 +29,11 @@ export const lessonReducer = (state=initialState, action) => {
                     ...state.lessons,
                     action.lesson
                 ]
+            }
+        case "SELECT_LESSON":
+            return {
+                ...state,
+                selectedLessonId: action.lessonId
             }
         default:
             return state

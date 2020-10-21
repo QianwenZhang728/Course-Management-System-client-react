@@ -2,27 +2,37 @@ import React from "react";
 import {connect} from "react-redux";
 import lessonService from "../services/LessonService";
 import topicService from "../services/TopicService";
+import {Link} from "react-router-dom";
 
 const TopicPillsComponent = (
     {
+        course,
+        moduleId,
         lessonId,
         topics=[],
         createTopicForLesson,
         deleteTopic,
         updateTopic,
         ok,
-        edit
+        edit,
+        selectedTopicId,
+        selectTopic
     }) =>
         <div className="topics">
             <ul className="nav nav-pills wbdv-topic-pill-list">
                 {
                     topics.map(topic =>
-                        <li key={topic._id} className="nav-item wbdv-topic-pill">
-                            <a className="nav-link">
+                        <li key={topic._id}
+                            className={topic._id === selectedTopicId? "nav-item selected nav-link" : "nav-item wbdv-topic-pill nav-link"}>
+                            {/*<a className="nav-link">*/}
                                 {
                                     !topic.editing &&
                                     <span>
-                                        {topic.title}
+                                        <Link to={`/course/${course._id}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+                                              onClick={() => selectTopic(topic._id)} className="link">
+                                            {topic.title}
+                                        </Link>
+
                                         <i onClick={() => edit(topic)} className="fa fa-pencil btn pull-right"></i>
                                     </span>
                                 }
@@ -43,19 +53,24 @@ const TopicPillsComponent = (
                                         {/*<i onClick={() => updateLesson({...lesson, editing: false})} className="fa fa-check btn pull-right wbdv-module-item-delete-btn"></i>*/}
                                     </span>
                                 }
-                            </a>
+                            {/*</a>*/}
                         </li>
                     )
                 }
+                <li className="nav-link">
+                    <i onClick={() => createTopicForLesson(lessonId)} className="fa fa-plus btn pull-right" style={{color: "#006a71"}}></i>
+                </li>
             </ul>
-            <i onClick={() => createTopicForLesson(lessonId)} className="fa fa-plus btn" style={{color: "red"}}></i>
 
         </div>
 
 
 const stateToPropertyMapper = (state) => ({
     topics: state.topicReducer.topics,
-    lessonId: state.topicReducer.lessonId
+    lessonId: state.topicReducer.lessonId,
+    moduleId: state.lessonReducer.moduleId,
+    course: state.courseReducer.course,
+    selectedTopicId: state.topicReducer.selectedTopicId
 })
 
 const dispatchToPropertyMapper = (dispatch) => ({
@@ -96,7 +111,12 @@ const dispatchToPropertyMapper = (dispatch) => ({
                 type: "CREATE_TOPIC_FOR_LESSON",
                 topic: actualTopic
             }))
-    }
+    },
+    selectTopic: (topicId) =>
+        dispatch({
+            type: "SELECT_TOPIC",
+            topicId: topicId
+        })
 
 })
 

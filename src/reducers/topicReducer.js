@@ -1,5 +1,6 @@
 const initialState = {
-    topics: []
+    topics: [],
+    selectedTopicId: ""
 }
 
 export const topicReducer = (state=initialState, action) => {
@@ -28,6 +29,13 @@ export const topicReducer = (state=initialState, action) => {
                     action.topic
                 ],
             }
+        case "SELECT_TOPIC":
+            return {
+                ...state,
+                selectedTopicId: action.topicId
+            }
+        case "CLEAR_TOPIC":
+            return {}
         default:
             return state
     }

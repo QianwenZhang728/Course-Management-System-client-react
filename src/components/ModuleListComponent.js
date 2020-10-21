@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 
 const ModuleListComponent = (
     {
+        selectedModuleId,
         course={},
         modules=[],
         deleteModule,
@@ -12,17 +13,23 @@ const ModuleListComponent = (
         updateModule,
         edit,
         ok,
+        selectModule
     }) =>
     <div>
         <nav className="nav nav-pills flex-column wbdv-module-list">
             <ul>
                 {
                     modules.map(module =>
-                        <li href="#" key={module._id} className="nav-item nav-link wbdv-module-item wbdv-module-item-title ">
+                        <li href="#" key={module._id}
+                            // className="nav-item nav-link wbdv-module-item wbdv-module-item-title "
+                            className={module._id === selectedModuleId? "nav-link wbdv-module-item wbdv-module-item-title selected" : "nav-item nav-link wbdv-module-item wbdv-module-item-title"}>
                             {
                                 !module.editing &&
                                 <span>
-                              <Link to={`/course/${course._id}/modules/${module._id}`} className="link">
+                              <Link to={`/course/${course._id}/modules/${module._id}`} className="link"
+                              onClick={() => selectModule(module)}
+                              // className={module.selected? "link selected" : "link"}
+                              >
                                 {module.title}
                               </Link>
                                 <i onClick={() => edit(module)} className="fa fa-pencil btn pull-right"></i>
@@ -52,7 +59,8 @@ const ModuleListComponent = (
 
 const stateToPropertyMapper = (state) => ({
     modules: state.moduleReducer.modules,
-    course: state.courseReducer.course
+    course: state.courseReducer.course,
+    selectedModuleId: state.moduleReducer.selectedModuleId
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
@@ -67,9 +75,9 @@ const propertyToDispatchMapper = (dispatch) => ({
         moduleService.updateModule(module._id, {
             ...module, editing: true
         }).then(status => dispatch({
-                type: "UPDATE_MODULE",
-                module: {...module, editing: true}
-            })),
+            type: "UPDATE_MODULE",
+            module: {...module, editing: true}
+        })),
     deleteModule: (module) =>
         moduleService.deleteModule(module._id)
             .then(status => dispatch({
@@ -87,12 +95,22 @@ const propertyToDispatchMapper = (dispatch) => ({
         dispatch({
             type: "UPDATE_MODULE",
             module: module
-        })
+        }),
     // moduleService.updateModule(module._id, module)
     //   .then(status => dispatch({
     //     type: "UPDATE_MODULE",
     //     module: module
     //   }))
+    selectModule: (module) => {
+        dispatch({
+            type: "SELECT_MODULE",
+            moduleId: module._id
+        });
+        dispatch({
+            type: "CLEAR_TOPIC"
+        })
+    }
+
 })
 
 export default connect

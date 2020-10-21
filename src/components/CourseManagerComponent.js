@@ -137,6 +137,12 @@ export class CourseManagerComponent extends React.Component {
                         {/*    }*/}
                         {/*</Route>*/}
 
+                        <Route path="/" exact>
+                            <CourseTableComponent courses={this.state.courses} deleteCourse={this.deleteCourse}
+                                                  handleChange={this.handleChange} handleSubmit={this.handleSubmit}
+                                                  handleView={this.handleView}/>
+                        </Route>
+
                         <Route path="/table" exact>
                             <CourseTableComponent courses={this.state.courses} deleteCourse={this.deleteCourse}
                                                   handleChange={this.handleChange} handleSubmit={this.handleSubmit}
@@ -150,6 +156,7 @@ export class CourseManagerComponent extends React.Component {
                         <Route path="/course/:courseId" exact component={CourseEditorContainer}></Route>
                         <Route path="/course/:courseId/modules/:moduleId" exact component={CourseEditorContainer}></Route>
                         <Route path="/course/:courseId/modules/:moduleId/lessons/:lessonId" exact component={CourseEditorContainer}></Route>
+                        <Route path="/course/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId" exact component={CourseEditorContainer}></Route>
 
                     </div>
                 </BrowserRouter>
