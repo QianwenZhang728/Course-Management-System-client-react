@@ -1,3 +1,5 @@
+Please select a lesson after selecting a module, and select a  topic after selection a lesson.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
