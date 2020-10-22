@@ -18,10 +18,10 @@ const LessonTabs = (
     }) =>
     <nav className="navbar navbar-expand-md">
         <div className="col-4 navbar-brand-combination">
-            <i onClick={() => window.history.go(-1)} className="fa fa-times btn wbdv-course-editor wbdv-close"></i>
-            {/*<Link to={"/table"} className="link">*/}
-            {/*    <i className="fa fa-times btn wbdv-course-editor wbdv-close"></i>*/}
-            {/*</Link>*/}
+            {/*<i onClick={() => window.history.go(-1)} className="fa fa-times btn wbdv-course-editor wbdv-close"></i>*/}
+            <Link to={"/table"} className="link">
+                <i className="fa fa-times btn wbdv-course-editor wbdv-close"></i>
+            </Link>
 
             {/*<a href="#" className="wbdv-course-editor wbdv-close">*/}
             {/*    <i className="fa fa-times"></i>*/}
