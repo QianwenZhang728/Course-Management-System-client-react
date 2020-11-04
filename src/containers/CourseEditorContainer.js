@@ -1,14 +1,16 @@
 import React from "react";
 import "../css/CourseEditorStyle.css";
 import {findCourseById} from "../services/CourseService";
-import WidgetListContainer from "./WidgetListContainer";
 import ModuleListComponent from "../components/ModuleListComponent";
 import {connect} from "react-redux";
 import moduleService from "../services/ModuleService";
 import lessonService from "../services/LessonService";
 import topicService from "../services/TopicService";
+import widgetService from "../services/WidgetService"
 import LessonTabsComponent from "../components/LessonTabsComponent";
 import TopicPillsComponent from "../components/TopicPillsComponent";
+import WidgetListComponent from "../components/WidgetListComponent";
+
 
 class CourseEditorContainer extends React.Component {
 
@@ -16,14 +18,18 @@ class CourseEditorContainer extends React.Component {
         const courseId = this.props.match.params.courseId
         const moduleId = this.props.match.params.moduleId
         const lessonId = this.props.match.params.lessonId
+        const topicId = this.props.match.params.topicId
+
         this.props.findCourseById(courseId)
         this.props.findModulesForCourse(courseId)
         if(moduleId) {
             this.props.findLessonsForModule(moduleId)
         }
         if(lessonId) {
-            console.log("in if lessonId")
             this.props.findTopicsForLesson(lessonId)
+        }
+        if(topicId) {
+            this.props.findWidgetsForTopic(topicId)
         }
 
     }
@@ -32,11 +38,15 @@ class CourseEditorContainer extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         const moduleId = this.props.match.params.moduleId
         const lessonId = this.props.match.params.lessonId
+        const topicId = this.props.match.params.topicId
         if(moduleId !== prevProps.match.params.moduleId) {
             this.props.findLessonsForModule(moduleId)
         }
         if(lessonId !== prevProps.match.params.lessonId) {
             this.props.findTopicsForLesson(lessonId)
+        }
+        if(topicId) {
+            this.props.findWidgetsForTopic(topicId)
         }
     }
 
@@ -52,7 +62,7 @@ class CourseEditorContainer extends React.Component {
 
                     <div className="col-8">
                         <TopicPillsComponent/>
-                        <WidgetListContainer/>
+                        <WidgetListComponent/>
                     </div>
                 </div>
             </div>
@@ -89,16 +99,22 @@ const propertyToDispatchMapper = (dispatch) => ({
     // to topicReducer
     findTopicsForLesson: (lessonId) =>
         topicService.findTopicsForLesson(lessonId)
-            .then(topics =>
-            {
-                dispatch({
+            .then(topics => dispatch({
                     type: "FIND_TOPICS_FOR_LESSON",
                     topics,
                     lessonId
-                })
-            }
+                })),
+    // to WidgetReducer
+    findWidgetsForTopic: (topicId) =>
+        widgetService.findWidgetsForTopic(topicId)
+            .then(widgets => {
+                // console.log(widgets);
+                dispatch({
+                type: "FIND_WIDGETS_FOR_TOPIC",
+                widgets,
+                topicId
+            })})
 
-                )
 })
 
 export default connect

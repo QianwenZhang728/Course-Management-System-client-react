@@ -1,45 +1,65 @@
-import {DELETE_WIDGET, CREATE_WIDGET, UPDATE_WIDGET} from "../actions/widgetActions";
+import widgetService from "../services/WidgetService";
 
 const initialState = {
-    widgets: [
-        {
-            _id: "1",
-            name: "Widget 1",
-            editing:false
-        },
-        {
-            _id: "2",
-            name: "Widget 2",
-            editing:false
-        },
-        {
-            _id: "3",
-            name: "Widget 3",
-            editing:false
-        }
-    ]
+    widgets: [],
+    move: function(from, to) {
+        this.widgets.splice(to, 0, this.widgets.splice(from, 1)[0])}
 }
 
 const widgetReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CREATE_WIDGET:
+        case "FIND_WIDGETS_FOR_TOPIC":
             return {
-                widgets: [...state.widgets, {
-                    _id: Date.now() + "",
-                    name: "New Widget"
-                }
-                ]
+                ...state,
+                widgets: action.widgets,
+                topicId: action.topicId
             }
-        case UPDATE_WIDGET:
+
+        case "FIND_ALL_WIDGETS":
             return {
-                widgets: state.widgets.map(
-                    widget => widget._id === action.widget._id ?
-                        action.widget : widget)
+                ...state,
+                widgets: action.widgets
             }
-        case DELETE_WIDGET:
+        case "CREATE_WIDGET":
             return {
-                widgets: state.widgets.filter(widget => widget !== action.widget)
+                ...state,
+                widgets: [...state.widgets, action.widget]
             }
+        case "UPDATE_WIDGET":
+            // console.log(state.widgets.map(widget => widget.id === action.widget.id ? action.widget : widget));
+            return {
+                ...state,
+                widgets: state.widgets.map(widget => widget.id === action.widget.id ? action.widget : widget)
+            }
+        case "DELETE_WIDGET":
+            return {
+                ...state,
+                widgets: state.widgets.filter(widget => widget.id !== action.widgetId)
+            }
+        case "DOWN_WIDGET":
+            let index = state.widgets.indexOf(action.widget)
+            let order = action.widget.widgetOrder;
+            state.widgets[index].widgetOrder = order + 1;
+            state.widgets[index+1].widgetOrder = order;
+            state.move(index, index + 1)
+            console.log(state.widgets)
+            return {
+                ...state,
+                widgets: [...state.widgets]
+            }
+        case "UP_WIDGET":
+            let idx = state.widgets.indexOf(action.widget)
+            let odr = action.widget.widgetOrder;
+            state.widgets[idx].widgetOrder = odr - 1;
+            state.widgets[idx - 1].widgetOrder = odr;
+            state.move(idx, idx - 1)
+
+            // console.log(state.widgets)
+            return {
+                ...state,
+                widgets: [...state.widgets]
+            }
+
         default:
             return state
     }

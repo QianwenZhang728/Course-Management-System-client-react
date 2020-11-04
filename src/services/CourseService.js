@@ -1,4 +1,3 @@
-
 const url = "https://wbdv-generic-server.herokuapp.com/api/qwzhang3/courses"
 
 export const findCourseById = (courseId) =>
