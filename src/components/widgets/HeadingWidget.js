@@ -1,4 +1,6 @@
 import React from "react";
+import {connect} from "react-redux";
+import widgetService from "../../services/WidgetService";
 
 const HeadingWidget = (
     {
@@ -85,8 +87,9 @@ const HeadingWidget = (
 
                  <select onChange={(event) => updateWidget({
                      ...widget,
-                     size: event.target.value.charAt(event.target.value.length - 1)
-                 })} className="form-control" >
+                     size: parseInt(event.target.value.charAt(event.target.value.length - 1))
+                 })} className="form-control">
+                     <option value="" disabled selected>Choose size</option>
                      <option>Heading 1</option>
                      <option>Heading 2</option>
                      <option>Heading 3</option>
@@ -104,5 +107,8 @@ const HeadingWidget = (
 
 
     </div>
+
+
+
 
 export default HeadingWidget

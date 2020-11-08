@@ -53,7 +53,6 @@ const WidgetListComponent = (
         <button onClick={() => createWidget(topicId)}>+</button>
     </div>
 
-
 // container
 const stateToPropertyMapper = (state) => ({
     widgets: state.widgetsReducer.widgets,
@@ -76,6 +75,7 @@ const propertyToDispatchMapper = (dispatch) => ({
             })),
 
     updateWidget: (widget) => {
+        debugger
         dispatch({
             type: "UPDATE_WIDGET",
             widget: widget
@@ -83,9 +83,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     },
 
     editWidget: (widget) => dispatch({
-                     type: "UPDATE_WIDGET",
-                     widget: {...widget, editing: true}
-                 }),
+        type: "UPDATE_WIDGET",
+        widget: {...widget, editing: true}
+    }),
 
     okWidget: (widget, widgets, topicId) => {
         dispatch({
@@ -112,7 +112,6 @@ const propertyToDispatchMapper = (dispatch) => ({
     })
 
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
