@@ -1,7 +1,7 @@
-const TOPIC_URL = "http://localhost:8080/api/topics";
-const WIDGET_URL = "http://localhost:8080/api/widgets";
-// const TOPIC_URL = "https://cs5610-fall-qwzhang-java.herokuapp.com/api/topics";
-// const WIDGET_URL = "https://cs5610-fall-qwzhang-java.herokuapp.com/api/widgets";
+// const TOPIC_URL = "http://localhost:8080/api/topics";
+// const WIDGET_URL = "http://localhost:8080/api/widgets";
+const TOPIC_URL = "https://cs5610-fall-qwzhang-java.herokuapp.com/api/topics";
+const WIDGET_URL = "https://cs5610-fall-qwzhang-java.herokuapp.com/api/widgets";
 
 
 const findAllWidgets = () =>
