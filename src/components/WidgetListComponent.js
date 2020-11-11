@@ -5,6 +5,8 @@ import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 import topicService from "../services/TopicService";
 import widgetService from "../services/WidgetService";
+import ListWidget from "./widgets/ListWidget";
+import ImageWidget from "./widgets/ImageWidget";
 
 
 const WidgetListComponent = (
@@ -46,6 +48,28 @@ const WidgetListComponent = (
                                                       downWidget={downWidget}
                                                       upWidget={upWidget}/>
                             }
+                            {
+                                widget.type === "List" &&
+                                <ListWidget  widget={widget}
+                                                  widgets={widgets}
+                                                  deleteWidget= {deleteWidget}
+                                                  editWidget={editWidget}
+                                                  updateWidget={updateWidget}
+                                                  okWidget={okWidget}
+                                                  downWidget={downWidget}
+                                                  upWidget={upWidget}/>
+                            }
+                        {
+                            widget.type === "Image" &&
+                            <ImageWidget  widget={widget}
+                                         widgets={widgets}
+                                         deleteWidget= {deleteWidget}
+                                         editWidget={editWidget}
+                                         updateWidget={updateWidget}
+                                         okWidget={okWidget}
+                                         downWidget={downWidget}
+                                         upWidget={upWidget}/>
+                        }
                     </li>
                 )
             }
@@ -115,4 +139,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(WidgetListComponent)
+(WidgetListComponent, HeadingWidget, ParagraphWidget, ListWidget, ImageWidget)

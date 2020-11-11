@@ -108,7 +108,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     findWidgetsForTopic: (topicId) =>
         widgetService.findWidgetsForTopic(topicId)
             .then(widgets => {
-                // console.log(widgets);
+                console.log(widgets);
                 dispatch({
                 type: "FIND_WIDGETS_FOR_TOPIC",
                 widgets,
